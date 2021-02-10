@@ -37,52 +37,30 @@ public class SinglyLinkedList<E> {
 		// size ++;
 		add(0, e);
 	}
-	    // SLL methods go here. As a starter, we will show you how to add a node to the list.
-//	    public void add(int value) {
-//	        Node newNode = new Node(value);
-//	        if(head == null) {
-//	            head = newNode;
-//	        } else {
-//	            Node runner = head;
-//	            while(runner.next != null) {
-//	                runner = runner.next;
-//	            }
-//	            runner.next = newNode;
-//	        }
-//	    }
-	public Object remove(int index) {
-	if(index < 0 || index >=size) {
-		throw new IllegalArgumentException("Cannot find");
-	}
-	Node prev = dummyhead;
-	for (int i = 0; i < index; i++) {
-		prev = prev.next;
-	}
-	Node retNode = prev.next;
-	prev.next = retNode.next;
-	retNode.next = null;
-	size --;
-	return retNode.value;
-}
+
 	public Object removeFirst() {
 		return remove(0);
 	}
 	public Object removeLast() {
 		return remove(size-1);
 	}
-	public void remove() {
-		if(dummyhead.next == null) {
-			System.out.println("The list is empty");
-		} else {
-			Node prev = dummyhead;
-		
-			while(prev.next != null) {
-						prev = prev.next;
-					}
-			prev = null;
-			size --;
-		}
-	}
+
+	public Object remove(int index) {
+    if(index < 0 || index >=size) {
+      throw new IllegalArgumentException("Cannot find");
+    }
+
+    Node prev = dummyhead;
+    for (int i = 0; i < index; i++) {
+      prev = prev.next;
+    }
+    Node retNode = prev.next;
+    prev.next = retNode.next;
+    retNode.next = null;
+    size --;
+    return retNode.value;
+  }
+	
 	public void printValues() {
 		if(dummyhead.next == null) {
 			System.out.println("The list is empty");

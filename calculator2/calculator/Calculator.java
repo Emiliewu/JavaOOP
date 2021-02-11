@@ -12,10 +12,12 @@ public class Calculator {
 		
 	}
 	public Calculator(double operandOne, String operation, double operandTwo) {
-		this.operandOne = operandOne;
-		this.operation = operation;
-		this.operandTwo = operandTwo;
+		setOperandOne(operandOne);
+		setOperation(operation);
+		setOperandTwo(operandTwo);
 	}
+	
+
 	
 	public void setOperand(double n) {
 		operand.add(n);

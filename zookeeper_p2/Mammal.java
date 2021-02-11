@@ -5,23 +5,30 @@ public class Mammal {
 	private int energyLevel;
 	
 	public Mammal(String name, int energyLevel) {
-		this.name = name;
-		this.energyLevel = energyLevel;
+		setName(name);
+		setEnergy(energyLevel);
 		
 	}
 	public Mammal(String name) {
-		this.name = name;
-		this.energyLevel = 100;
+		setName(name);
+		setEnergy(100);
 		
 	}
 	public Mammal() {
-		this.name = null;
-		this.energyLevel = 100;
+		setName(null);
+		setEnergy(100);
+
 		
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setEnergy(int energyLevel){
 	    this.energyLevel = energyLevel;
+	}
+	public String getName() {
+		return this.name;
 	}
 
 	public int getEnergy(){

@@ -4,19 +4,38 @@ import java.util.Random;
 
 public class BankAccount {
 	//(string) account number, (double) checking balance, (double) savings balance.
-	private String accountNumber;
+	protected String accountNumber;
 	private double checkingBalance;
 	private double savingBalance;
 	private static int numberOfAccounts = 0;
 	private static int totalDeposites = 0;
 	
 	public BankAccount() {
-		this.accountNumber = generateAccount();
-		this.checkingBalance = 0;
-		this.savingBalance = 0;
+		setAccount();
+		setChecking();
+		setSaving();
 		numberOfAccounts++;
 	}
+	public void setAccount() {
+		this.accountNumber = generateAccount();
+	}
+	public void setChecking() {
+		this.checkingBalance = 0;
+	}
+	public void setSaving() {
+		this.savingBalance = 0;
+	}
+	public String getAccount() {
+		return this.accountNumber;
+	}
+	public double getChecking() {
+		return this.checkingBalance;
+	}
 	
+	public double getSaving() {
+		return this.savingBalance;
+	}
+		
 	public void depositeChecking(double deposite) {
 		this.checkingBalance += deposite;
 		totalDeposites += this.checkingBalance;
@@ -27,13 +46,7 @@ public class BankAccount {
 		totalDeposites += this.savingBalance;
 	}
 	
-	public double getChecking() {
-		return this.checkingBalance;
-	}
-	
-	public double getSaving() {
-		return this.savingBalance;
-	}
+
 	
 	public double withdrawChecking(double amount) {
 		if (amount > this.checkingBalance) {

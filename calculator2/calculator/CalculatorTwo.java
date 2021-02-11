@@ -25,56 +25,67 @@ public class CalculatorTwo {
 	//operator priority take place
 	public void performOperation(Object o) {
 		//validation
-//		if((this.operands.size() % 2 == 0) && (o == "+" || o == "-" || o == "*" || o == "/" )) {
-//			this.isValid = true;
-//		} else if ((this.operands.size() % 2 != 0) && (o != "+" & o != "-" & o != "*" & o != "/")) {
-//			this.isValid = true;
-//		} else {
-//			this.isValid = false;
-////			throw new IllegalArgumentException("Cannot calculate, enter valid number or operator");
-//		}
-//		System.out.println(this.isValid);
 		this.operands.add(o);
-		if(o == "=") {
-			calculate();
-		} 
+		if((this.operands.size() % 2 == 0) && (o.equals("+") || o.equals( "-" )|| o.equals("*")|| o.equals( "/" ) || o.equals("="))) {
+			this.isValid = true;
+		} else if ((this.operands.size() % 2 != 0) && (!o.equals("+") & !o.equals("-") & !o.equals("*") & !o.equals("/") )) {
+			this.isValid = true;
+		}  else {
+			this.isValid = false;
+			throw new IllegalArgumentException("Cannot calculate, enter valid number or operator");
+		}
+//		System.out.println(this.isValid);
+		if(o.equals("=") ) {
+			if(isValid == true) {
+				calculate();
+			}
+		}
+		
 		
 	}
 	
 	public void calculate() {
 		double temp = 0;
-		for (Object o: this.operands ) {
-			if(o == "*") {
-				int idx = this.operands.indexOf("*");
-				temp = (double)this.operands.get(idx-1) * (double)this.operands.get(idx+1);
-				this.operands.set(idx-1, temp);
-				this.operands.remove(idx);
-				this.operands.remove(idx+1);
-			} else if (o == "/") {
-				int idx = this.operands.indexOf("/");
-				temp = (double)this.operands.get(idx-1) / (double)this.operands.get(idx+1);
-				this.operands.set(idx-1, temp);
-				this.operands.remove(idx);
-				this.operands.remove(idx+1);
+		for (int i = 0; i < this.operands.size(); i++) {
+			if(this.operands.get(i).equals("*")) {
+				temp = (double)this.operands.get(i-1) * (double)this.operands.get(i+1);
+				this.operands.set(i-1, temp);
+//				System.out.println(this.operands.get(i-1));
+				this.operands.remove(i+1);
+				this.operands.remove(i);
+				i --;
+//				System.out.println(this.operands.get(i));
+			} else if(this.operands.get(i).equals("/")) {
+				temp = (double)this.operands.get(i-1) / (double)this.operands.get(i+1);
+				this.operands.set(i-1, temp);
+//				System.out.println(this.operands.get(i-1));
+				this.operands.remove(i+1);
+				this.operands.remove(i);
+//				System.out.println(this.operands.get(i));
+				i --;
+			} 	
+		}
+		for (int i = 0; i < this.operands.size(); i++) {
+			if(this.operands.get(i).equals("+")) {
+				temp = (double)this.operands.get(i-1) + (double)this.operands.get(i+1);
+				this.operands.set(i-1, temp);
+//				System.out.println(this.operands.get(i-1));
+				this.operands.remove(i+1);
+				this.operands.remove(i);
+//				System.out.println(this.operands.get(i));
+				i--;
+			} else if(this.operands.get(i).equals("-")) {
+				temp = (double)this.operands.get(i-1) - (double)this.operands.get(i+1);
+				this.operands.set(i-1, temp);
+//				System.out.println(this.operands.get(i-1));
+				this.operands.remove(i+1);
+				this.operands.remove(i);
+//				System.out.println(this.operands.get(i));
+				i--;
 			} 	
 		}
 
-		for (Object o: this.operands) {
-			if(o == "+") {
-				int idx = this.operands.indexOf("+");
-				temp = (double)this.operands.get(idx-1) + (double)this.operands.get(idx+1);
-				this.operands.set(idx-1, temp);
-				this.operands.remove(idx);
-				this.operands.remove(idx+1);
-			} else if (o == "-") {
-				int idx = this.operands.indexOf("-");
-				temp = (double)this.operands.get(idx-1) - (double)this.operands.get(idx+1);
-				this.operands.set(idx-1, temp);
-				this.operands.remove(idx);
-				this.operands.remove(idx+1);
-			} 	
-		}
-		result = temp;
+		result = (double)this.operands.get(0);
 	}
 		
 

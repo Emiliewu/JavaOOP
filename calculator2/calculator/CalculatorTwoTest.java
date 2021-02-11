@@ -17,6 +17,17 @@ public class CalculatorTwoTest {
 		c.performOperation(100.0);
 		c.performOperation("=");
 		CalculatorTwo.getResult();
+		
+		c.setZero();
+		CalculatorTwo.getResult();
+		
+		c.performOperation(20.0);
+		c.performOperation("/");
+		c.performOperation(5.0);
+		c.performOperation("-");
+		c.performOperation(100.0);
+		c.performOperation("=");
+		CalculatorTwo.getResult();
 
 	}
 

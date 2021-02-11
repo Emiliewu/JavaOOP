@@ -20,6 +20,7 @@ public class CalculatorTwo {
 	
 	public void setZero() {
 		result = 0;
+		this.operands.clear();
 	}
 	
 	//operator priority take place
